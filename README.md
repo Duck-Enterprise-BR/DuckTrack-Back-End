@@ -1,34 +1,26 @@
-# DuckTrack
+# Duck Track - Back-End 
 
-## Installation
+Com ExpressoTS e MongoDB
+
+## Instalação
 
 ```bash
 npm run install
 ```
 
-## Running the app
+## Executando a aplicação
 
 ```bash
-# development
+# Desenvolvimento
 npm run start
 
-# build
+# Build
 npm run build
 
-# production mode
+# Modo de produção
 npm run start:prod
 ```
 
-## Test
+## Aplicativo android
 
-```bash
-# unit tests
-npm run test
-
-# test coverage
-npm run test:cov
-```
-
-## Mobile Application
-
-Repository <https://github.com/Duck-Enterprise-BR/DuckTrack-Mobile>
+<https://github.com/Duck-Enterprise-BR/DuckTrack-Mobile>
