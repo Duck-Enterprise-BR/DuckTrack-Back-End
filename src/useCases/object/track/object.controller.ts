@@ -1,5 +1,5 @@
 import { BaseController } from "@expressots/core";
-import { controller, httpGet, httpPost, response, requestBody } from "inversify-express-utils";
+import { controller, httpPost, response, requestBody } from "inversify-express-utils";
 import { TrackingJob } from "../../../jobs/tracking/tracking.job";
 import { AxiosResponse } from "axios";
 
@@ -10,7 +10,7 @@ class ObjectController extends BaseController {
   }
 
   @httpPost("/")
-  async create(@requestBody() body: { code: string }, @response() res: any) {
+  async track(@requestBody() body: { code: string }, @response() res: any) {
     try {
       let response: AxiosResponse = await TrackingJob.Track(body.code);
       return res.send(response.data);
