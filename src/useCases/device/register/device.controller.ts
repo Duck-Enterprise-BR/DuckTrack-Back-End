@@ -12,8 +12,9 @@ class DeviceController extends BaseController {
   @httpPost("/")
   async register(@requestBody() body: Device, @response() res: any) {
     let device = new Device(body.name, body.notificationToken);
+    let collection:string = process.env.C_DEVICE || "";
     try {
-      await DBJob.Insert(device);
+      await DBJob.Insert(device, collection);
       res.send(device);
     } catch (error: any) {
       return res.status(500).send('Internal Server Error');
