@@ -1,11 +1,9 @@
 export class Device {
     public name: string;
+    public notificationToken: string;
 
-    constructor(name: string, id: string) {
+    constructor(name: string, notificationToken: string) {
         this.name = name;
-    }
-
-    public getInfo(): string {
-        return `Name: ${this.name}`;
+        this.notificationToken = notificationToken;
     }
 }

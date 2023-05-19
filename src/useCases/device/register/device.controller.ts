@@ -1,7 +1,7 @@
 import { BaseController } from "@expressots/core";
 import { controller, response, httpPost, requestBody } from "inversify-express-utils";
 import { Device } from "../../../models/model.device";
-import { DeviceJob } from "../../../jobs/device/device.job";
+import { DBJob } from "../../../jobs/db/db.job";
 
 @controller("/device/register")
 class DeviceController extends BaseController {
@@ -11,10 +11,9 @@ class DeviceController extends BaseController {
 
   @httpPost("/")
   async register(@requestBody() body: Device, @response() res: any) {
-    let device = new Device(body.name, body.id);
-    
+    let device = new Device(body.name, body.notificationToken);
     try {
-      DeviceJob.Register(device);
+      await DBJob.Insert(device);
       res.send(device);
     } catch (error: any) {
       return res.status(500).send('Internal Server Error');
