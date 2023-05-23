@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 
 export async function bootstrap() {
     const app = AppInstance.create(container);
-    app.listen(3000, ServerEnvironment.Development);
+    app.listen(4000, ServerEnvironment.Development);
     dotenv.config();
 }
 
