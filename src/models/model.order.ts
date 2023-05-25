@@ -6,6 +6,6 @@ export class Order {
     constructor(name: string, code: string, device: string) {
         this.name = name;
         this.code = code;
-        this.device = device
+        this.device = device;
     }
 }
