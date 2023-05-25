@@ -1,5 +1,5 @@
 import { CreateModule } from "@expressots/core";
-import { DeviceController } from "./register/device.controller";
+import { DeviceController } from ".//device.controller";
 
 const DeviceModule = CreateModule([DeviceController]);
 

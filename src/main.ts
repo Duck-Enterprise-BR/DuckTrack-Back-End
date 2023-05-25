@@ -7,8 +7,9 @@ import mongoose from "mongoose";
 export async function bootstrap() {
     dotenv.config();
     const MONGO_URL = process.env.MONGO_URL ?? "";
+    const PORT: number = parseInt(process.env.PORT ?? "3000", 10);
     const app = AppInstance.create(container);
-    app.listen(4000, ServerEnvironment.Development);
+    app.listen(PORT, ServerEnvironment.Development);
     mongoose
         .connect(MONGO_URL, {
             dbName: process.env.DB_NAME ?? "",
