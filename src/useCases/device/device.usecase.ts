@@ -13,14 +13,19 @@ class DeviceUseCase {
             statusCode: StatusCode.OK,
         };
 
-        const validateName = Validator.isString("name", device.name);
+        const validateUserCode = Validator.isString(
+            "userCode",
+            device.userCode,
+            1,
+        );
         const validateToken = Validator.isString(
             "notificationToken",
             device.notificationToken,
+            1,
         );
 
-        if (validateName.errors.length) {
-            response.errors.push(validateName);
+        if (validateUserCode.errors.length) {
+            response.errors.push(validateUserCode);
         }
 
         if (validateToken.errors.length) {
@@ -32,8 +37,29 @@ class DeviceUseCase {
             return response;
         }
 
-        const data = await deviceModel.create(device);
-        response.success = data;
+        const checkExistsUserCode = await deviceModel
+            .findOne({
+                userCode: device.userCode,
+            })
+            .lean();
+
+        if (checkExistsUserCode) {
+            checkExistsUserCode.notificationToken = device.notificationToken;
+
+            await deviceModel.updateOne(
+                {
+                    _id: checkExistsUserCode._id!,
+                },
+                {
+                    notificationToken: device.notificationToken,
+                },
+            );
+
+            response.success = checkExistsUserCode;
+        } else {
+            const data = await deviceModel.create(device);
+            response.success = data;
+        }
 
         return response;
     }

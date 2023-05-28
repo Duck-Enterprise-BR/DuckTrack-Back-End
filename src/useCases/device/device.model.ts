@@ -4,7 +4,7 @@ import { defaultSchema } from "../../base/database/default-schema";
 
 const DeviceSchema = new Schema(
     {
-        name: {
+        userCode: {
             type: String,
             require: true,
         },
