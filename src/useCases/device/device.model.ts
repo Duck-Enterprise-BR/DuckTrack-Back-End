@@ -7,6 +7,7 @@ const DeviceSchema = new Schema(
         userCode: {
             type: String,
             require: true,
+            unique: true,
         },
         notificationToken: {
             type: String,
