@@ -1,5 +1,12 @@
 import { BaseController } from "@expressots/core";
-import { controller, httpGet, response } from "inversify-express-utils";
+import {
+    controller,
+    httpPost,
+    requestBody,
+    response,
+} from "inversify-express-utils";
+import { DeviceUseCase } from "./device.usecase";
+import { IDevice } from "./device.dto";
 
 @controller("/device")
 class DeviceController extends BaseController {
@@ -7,9 +14,10 @@ class DeviceController extends BaseController {
         super("device-controller");
     }
 
-    @httpGet("/")
-    execute(@response() res: any) {
-        return res.send("Hello Expresso TS");
+    @httpPost("/register")
+    async execute(@requestBody() body: IDevice, @response() res: any) {
+        const response = await DeviceUseCase.register(body);
+        return res.status(response.statusCode).send(response);
     }
 }
 
