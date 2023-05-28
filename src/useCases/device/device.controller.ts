@@ -16,7 +16,8 @@ class DeviceController extends BaseController {
 
     @httpPost("/register")
     async execute(@requestBody() body: IDevice, @response() res: any) {
-        const response = await DeviceUseCase.register(body);
+        const useCase = new DeviceUseCase();
+        const response = await useCase.register(body);
         return res.status(response.statusCode).send(response);
     }
 }

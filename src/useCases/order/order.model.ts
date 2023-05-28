@@ -8,7 +8,7 @@ const OrderSchema = new Schema(
             type: String,
             require: true,
         },
-        icon: {
+        code: {
             type: String,
             require: true,
         },

@@ -18,7 +18,7 @@ export class Validator {
         };
     }
 
-    static isOrderCode(code: string): IErrors {
+    static isOrderCode(field: string, code: string): IErrors {
         const errors: string[] = [];
         const regCode = /^[A-Z]{2}\d{9}[A-Z]{2}$/;
         const test = regCode.test(code);
@@ -28,8 +28,8 @@ export class Validator {
         }
 
         return {
+            field,
             errors,
-            valid: test,
         };
     }
 }

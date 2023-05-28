@@ -1,6 +1,12 @@
 import { BaseController } from "@expressots/core";
-import { controller, httpGet, response } from "inversify-express-utils";
+import {
+    controller,
+    httpPost,
+    requestBody,
+    response,
+} from "inversify-express-utils";
 import { OrderUseCase } from "./order.usecase";
+import { IOrder } from "./order.dto";
 
 @controller("/order")
 class OrderController extends BaseController {
@@ -8,11 +14,11 @@ class OrderController extends BaseController {
         super("order-controller");
     }
 
-    @httpGet("/")
-    execute(@response() res: any) {
-        const orderUseCase = new OrderUseCase();
-        const data = orderUseCase.list();
-        return res.send(data);
+    @httpPost("/register")
+    async execute(@requestBody() body: IOrder, @response() res: any) {
+        const useCase = new OrderUseCase();
+        const response = await useCase.Register(body);
+        return res.status(response.statusCode).send(response);
     }
 }
 

@@ -7,7 +7,7 @@ import { StatusCode } from "@expressots/core";
 
 @provide(DeviceUseCase)
 class DeviceUseCase {
-    public static async register(device: IDevice): Promise<IRequestResponse> {
+    async register(device: IDevice): Promise<IRequestResponse> {
         const response: IRequestResponse = {
             errors: [],
             statusCode: StatusCode.OK,
@@ -28,7 +28,7 @@ class DeviceUseCase {
         }
 
         if (response.errors.length) {
-            response.statusCode = 400;
+            response.statusCode = StatusCode.BadRequest;
             return response;
         }
 
