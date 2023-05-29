@@ -3,6 +3,7 @@ import { AppInstance, ServerEnvironment } from "@expressots/core";
 import { container } from "./app-container";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import { AppRedisClient } from "./base/redis/redis-client";
 
 export async function bootstrap() {
     dotenv.config();
@@ -20,6 +21,9 @@ export async function bootstrap() {
         .catch((err) => {
             console.error(err);
         });
+
+    const test_redis = new AppRedisClient();
+    test_redis.Connect();
 }
 
 bootstrap();
