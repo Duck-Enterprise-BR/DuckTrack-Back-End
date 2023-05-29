@@ -1,26 +1,61 @@
-# Duck Track - Back-End 
+#  Duck Track - Back-End
+
+  
 
 Com ExpressoTS e MongoDB
 
-## Instalação
+  
+
+##  Instalação
+
+  
 
 ```bash
-npm run install
+
+npm  run  install
+
 ```
 
-## Executando a aplicação
+  
 
+##  Executando a aplicação
+
+  
+
+### Para subir o container use:
+
+ 
 ```bash
+# Docker
+
+docker-compose  up  -d
+
+ ```
+### Para executar o projeto use:
+```bash
+
 # Desenvolvimento
+
 npm run start
 
+  
+
 # Build
+
 npm run build
 
+  
+
 # Modo de produção
+
 npm run start:prod
+
 ```
 
-## Aplicativo android
+  
+
+##  Aplicativo android
+
+  
 
 <https://github.com/Duck-Enterprise-BR/DuckTrack-Mobile>
