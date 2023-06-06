@@ -27,7 +27,8 @@
     "inversify-express-utils": "^6.3.2",
     "mongodb": "^5.5.0",
     "mongoose": "^7.2.1",
-    "redis": "^4.6.6",
+    "node-cron": "^3.0.2",
+    "redis": "^4.6.7",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {

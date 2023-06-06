@@ -3,7 +3,8 @@ import { AppInstance, ServerEnvironment } from "@expressots/core";
 import { container } from "./app-container";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import { AppRedisClient } from "./base/redis/redis-client";
+import cron from 'node-cron';
+import { TrackJob } from "./jobs/track-job/track.job";
 
 export async function bootstrap() {
     dotenv.config();
@@ -22,8 +23,15 @@ export async function bootstrap() {
             console.error(err);
         });
 
-    const test_redis = new AppRedisClient();
-    test_redis.Connect();
+
+
+    const trackJob = new TrackJob;
+    trackJob.track();
+    cron.schedule('* * * * *', () => {
+        console.log('Cron job executado!');
+
+    });
+
 }
 
 bootstrap();

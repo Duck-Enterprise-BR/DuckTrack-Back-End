@@ -12,6 +12,10 @@ const OrderSchema = new Schema(
             type: String,
             require: true,
         },
+        deviceId: {
+            type: String,
+            require: true
+        },
         ...defaultSchema,
     },
     {
